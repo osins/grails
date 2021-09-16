@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM openjdk:8u302-slim-buster
+FROM openjdk:17-jdk-slim-buster
 
 RUN apt update && apt install -y bash unzip zip curl wget
 
