@@ -12,13 +12,13 @@ RUN apk add --update-cache unzip zip curl wget
 # Install Grails
 RUN curl -s "https://get.sdkman.io" | bash
 
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install java $VERSION_JAVA" 
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install maven $VERSION_MAVEN" 
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install groovy $VERSION_GROOVY" 
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install gradle $VERSION_GRADLE" 
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install grails $VERSION_GRAILS" 
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install java $VERSION_JAVA" 
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install maven $VERSION_MAVEN" 
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install groovy $VERSION_GROOVY" 
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install gradle $VERSION_GRADLE" 
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && yes | sdk install grails $VERSION_GRAILS" 
 
-RUN /bin/bash -c "rm -rf $HOME/.sdkman/archives/* && rm -rf $HOME/.sdkman/tmp/* && rm -rf /opt/sdkman && rm -rf /tmp/*"
+RUN bash -c "rm -rf $HOME/.sdkman/archives/* && rm -rf $HOME/.sdkman/tmp/* && rm -rf /opt/sdkman && rm -rf /tmp/*"
 
 # # Set Default Behavior
 ENTRYPOINT ["grails"]
