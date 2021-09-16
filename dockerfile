@@ -1,7 +1,7 @@
 # Install dependencies only when needed
-FROM gosu/alpine:latest
+FROM alpine:latest
 
-ARG VERSION_JAVA="8.0.302-zulu "
+ARG VERSION_JAVA="8.0.302-zulu"
 ARG VERSION_MAVEN="3.8.2"
 ARG VERSION_GROOVY="2.1.9"
 ARG VERSION_GRADLE="7.2"
