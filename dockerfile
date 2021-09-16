@@ -1,7 +1,7 @@
 # Install dependencies only when needed
-FROM openjdk:17-jdk-slim-buster
+FROM openjdk:7-jdk-alpine3.7
 
-RUN apt update && apt install -y bash unzip zip curl wget
+RUN apk update && apk add bash unzip zip curl wget
 
 WORKDIR /opt
 
