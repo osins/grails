@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM gosu:alpine
+FROM gosu/alpine:latest
 
 ARG VERSION_JAVA="8.0.302-zulu "
 ARG VERSION_MAVEN="3.8.2"
@@ -7,7 +7,7 @@ ARG VERSION_GROOVY="2.1.9"
 ARG VERSION_GRADLE="7.2"
 ARG VERSION_GRAILS="2.3.8"
 
-RUN apt-get update && apt-get install -y unzip zip curl wget
+RUN apk add --update-cache unzip zip curl wget
 
 # Install Grails
 RUN curl -s "https://get.sdkman.io" | bash
