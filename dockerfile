@@ -7,7 +7,7 @@ ARG VERSION_GROOVY="2.1.9"
 ARG VERSION_GRADLE="7.2"
 ARG VERSION_GRAILS="2.3.8"
 
-RUN apt update && ap install -y bash unzip zip curl wget
+RUN apt update && apt install -y bash unzip zip curl wget
 
 # Install Grails
 RUN curl -s "https://get.sdkman.io" | bash
