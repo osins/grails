@@ -1,0 +1,29 @@
+# Install dependencies only when needed
+# FROM openjdk:8u302-slim-buster
+# RUN apt update && apt install -y bash unzip zip curl wget
+
+FROM openjdk:7u91-jdk-alpine
+RUN apk update && apk add bash unzip zip curl wget
+
+WORKDIR /opt
+
+ARG GRADLE_VER="3.5"
+RUN version=$GRADLE_VER && wget https://services.gradle.org/distributions/gradle-$GRADLE_VER-all.zip && \
+    unzip gradle-$GRADLE_VER-all.zip && rm -rf gradle-$GRADLE_VER-all.zip
+ENV GRADLE_HOME="/opt/gradle-$GRADLE_VER"
+
+ARG GRAILS_VER="2.3.8"
+RUN wget https://github.com/grails/grails-core/releases/download/v$GRAILS_VER/grails-$GRAILS_VER.zip && \
+    unzip grails-$GRAILS_VER.zip && rm -rf grails-$GRAILS_VER.zip
+ENV GRAILS_HOME="/opt/grails-$GRAILS_VER"
+
+ARG MVN_VER="3.8.2"
+RUN wget https://dlcdn.apache.org/maven/maven-3/$MVN_VER/binaries/apache-maven-$MVN_VER-bin.tar.gz && \
+    tar -zxvf apache-maven-$MVN_VER-bin.tar.gz && rm -rf apache-maven-$MVN_VER-bin.tar.gz
+ENV MVN_HOME="/opt/apache-maven-$MVN_VER"
+
+ENV PATH="$GRADLE_HOME/bin:$GRAILS_HOME/bin:$MVN_HOME/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# # Set Default Behavior
+# ENTRYPOINT ["grails"]
+# CMD ["run-app"]
